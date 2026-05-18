@@ -2,7 +2,7 @@
 
 A simple and clean personal dashboard to help track your bills, subscriptions, renewals, and documents all in one place.
 
-## Features
+## Features(From below listed pages some features are in progress)
 
 - **Dashboard**: A quick overview of your upcoming bills, active subscriptions, and renewal deadlines.
 - **Bills Tracker**: Log, categorize, and track individual bills to stay on top of payments.
@@ -15,7 +15,7 @@ A simple and clean personal dashboard to help track your bills, subscriptions, r
 - **Build Tool**: Vite
 - **Icons**: Lucide React
 - **Routing**: React Router DOM (v7)
-- **Styling**: Vanilla CSS with custom design tokens (dark mode)
+- **Styling**: Vanilla CSS with custom design tokens
 
 ## Getting Started
 
