@@ -1,22 +1,28 @@
+// Renewals page: simple static content dikhata hai
 export default function Renewals() {
     return (
         <div>
             <div className="page-header">
                 <div>
+                    {/* Page title */}
                     <h1 className="page-title">Renewals</h1>
 
+                    {/* Short description */}
                     <p className="page-subtitle">
                         Upcoming renewals and alerts.
                     </p>
                 </div>
 
+                {/* Add renewal button (UI only) */}
                 <button className="btn btn-dark">Add Renewal</button>
             </div>
 
+            {/* Grid me different renewal cards */}
             <div className="grid grid-3">
                 <div className="card">
                     <h2>Vehicle Insurance</h2>
 
+                    {/* Small note with inline style */}
                     <p
                         style={{
                             marginTop: '12px',

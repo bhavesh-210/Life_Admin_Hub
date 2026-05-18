@@ -1,8 +1,11 @@
+// React Router helpers
 import { useNavigate, Link } from 'react-router-dom';
 
 export default function Signup({ setIsLoggedIn }) {
+    // Navigate hook for redirect
     const navigate = useNavigate();
 
+    // Dummy submit handler — mark user logged in and redirect
     function handleSubmit(e) {
         e.preventDefault();
 
@@ -16,6 +19,7 @@ export default function Signup({ setIsLoggedIn }) {
             <form onSubmit={handleSubmit} className="auth-card">
                 <h1>Create account</h1>
 
+                {/* Name input */}
                 <input
                     type="text"
                     placeholder="Full Name"
@@ -23,6 +27,7 @@ export default function Signup({ setIsLoggedIn }) {
                     required
                 />
 
+                {/* Email input */}
                 <input
                     type="email"
                     placeholder="Email"
@@ -30,6 +35,7 @@ export default function Signup({ setIsLoggedIn }) {
                     required
                 />
 
+                {/* Password input */}
                 <input
                     type="password"
                     placeholder="Password"
@@ -37,10 +43,12 @@ export default function Signup({ setIsLoggedIn }) {
                     required
                 />
 
+                {/* Signup button */}
                 <button className="btn btn-dark" style={{ width: '100%' }}>
                     Signup
                 </button>
 
+                {/* Link to login */}
                 <p
                     style={{
                         marginTop: '20px',

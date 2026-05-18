@@ -1,3 +1,4 @@
+// Demo bills list — sample data for UI and state
 export const billsData = [
     {
         id: 1,
@@ -45,6 +46,7 @@ export const billsData = [
     },
 ];
 
+// Demo documents list
 export const documentsData = [
     {
         id: 1,
@@ -68,6 +70,7 @@ export const documentsData = [
     },
 ];
 
+// Demo appointments list
 export const appointmentsData = [
     {
         id: 1,

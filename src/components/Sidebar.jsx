@@ -1,3 +1,4 @@
+// Sidebar with navigation links
 import { NavLink } from 'react-router-dom';
 
 export default function Sidebar() {
@@ -6,6 +7,7 @@ export default function Sidebar() {
             <div className="sidebar-logo">Life Admin Hub</div>
             <p className="sidebar-subtitle">Personal operating system</p>
 
+            {/* Navigation links using NavLink */}
             <NavLink className="sidebar-link" to="/dashboard">
                 <span>🏠</span> Dashboard
             </NavLink>

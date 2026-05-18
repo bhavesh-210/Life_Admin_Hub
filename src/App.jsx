@@ -1,3 +1,4 @@
+// App root: routes and protected layout
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useState } from 'react';
 
@@ -11,11 +12,13 @@ import Renewals from './pages/Renewals';
 import Appointments from './pages/Appointments';
 import Sidebar from './components/Sidebar';
 
+// ProtectedRoute: agar user logged in nahi hai to login page pe bhej do
 function ProtectedRoute({ isLoggedIn, children }) {
     if (!isLoggedIn) return <Navigate to="/login" />;
 
     return (
         <div className="layout">
+            {/* Sidebar aur main content layout */}
             <Sidebar />
             <div className="main-content">{children}</div>
         </div>
@@ -23,6 +26,7 @@ function ProtectedRoute({ isLoggedIn, children }) {
 }
 
 export default function App() {
+    // Simple auth state (demo)
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     return (
@@ -37,6 +41,7 @@ export default function App() {
                 element={<Signup setIsLoggedIn={setIsLoggedIn} />}
             />
 
+            {/* Protected app routes */}
             <Route
                 path="/dashboard"
                 element={
@@ -82,6 +87,7 @@ export default function App() {
                 }
             />
 
+            {/* Default fallback */}
             <Route path="*" element={<Navigate to="/" />} />
         </Routes>
     );

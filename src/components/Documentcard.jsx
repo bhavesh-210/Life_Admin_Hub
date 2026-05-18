@@ -1,3 +1,4 @@
+// Component to render a single document item
 export default function DocumentCard({ document }) {
     return (
         <div className="list-item">
@@ -8,6 +9,7 @@ export default function DocumentCard({ document }) {
                 </p>
             </div>
 
+            {/* Stored badge */}
             <span className="badge badge-blue">Stored</span>
         </div>
     );

@@ -1,7 +1,8 @@
+// Mock emails array — demo data jo automation hook parse karega
 export const mockEmails = [
     {
         id: 1,
-        type: 'transaction',
+        type: 'transaction', // transaction type email
         subject: 'Payment successful for Netflix',
         amount: 499,
         category: 'OTT',
@@ -17,14 +18,14 @@ export const mockEmails = [
     },
     {
         id: 3,
-        type: 'document',
+        type: 'document', // document related email
         subject: 'Car Insurance Policy Document',
         documentName: 'Car Insurance',
         renewalDate: '20 June',
     },
     {
         id: 4,
-        type: 'appointment',
+        type: 'appointment', // appointment confirmation email
         subject: 'Doctor appointment confirmed',
         title: 'Doctor Checkup',
         date: '8 June',

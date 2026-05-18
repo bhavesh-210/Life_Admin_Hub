@@ -1,20 +1,25 @@
+// Appointments page — static list of upcoming appointments
 export default function Appointments() {
     return (
         <div>
             <div className="page-header">
                 <div>
+                    {/* Title */}
                     <h1 className="page-title">Appointments</h1>
 
+                    {/* Subtitle */}
                     <p className="page-subtitle">
                         Manage doctor, business and service appointments.
                     </p>
                 </div>
 
+                {/* Button to add appointment (UI) */}
                 <button className="btn btn-dark">Add Appointment</button>
             </div>
 
             <div className="card">
                 <div className="list">
+                    {/* Example appointment items */}
                     <div className="list-item">
                         <div>
                             <h3>Doctor Checkup</h3>

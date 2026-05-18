@@ -1,3 +1,4 @@
+// Landing page with hero and feature previews
 import { Link } from 'react-router-dom';
 
 export default function Landing() {
@@ -7,6 +8,7 @@ export default function Landing() {
                 <h2>Life Admin Hub</h2>
 
                 <div className="nav-buttons">
+                    {/* Navigation links */}
                     <Link to="/login" className="outline-btn">
                         Login
                     </Link>
@@ -21,6 +23,7 @@ export default function Landing() {
                 <div>
                     <h1>Your entire life admin system in one place.</h1>
 
+                    {/* Short app description */}
                     <p className="hero-text">
                         Manage bills, renewals, documents, subscriptions,
                         appointments and monthly spending with a beautiful
@@ -38,6 +41,7 @@ export default function Landing() {
                     </div>
                 </div>
 
+                {/* Preview area showing sample cards */}
                 <div className="preview-card">
                     <div className="preview-box">
                         <h3>Monthly Spending</h3>
@@ -56,6 +60,7 @@ export default function Landing() {
                 </div>
             </section>
 
+            {/* Features section */}
             <section className="features-section">
                 <div className="feature-card">💳 Bills Tracking</div>
 
