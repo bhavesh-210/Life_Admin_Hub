@@ -1,16 +1,50 @@
-# React + Vite
+# Life Admin Hub
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple and clean personal dashboard to help track your bills, subscriptions, renewals, and documents all in one place.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Dashboard**: A quick overview of your upcoming bills, active subscriptions, and renewal deadlines.
+- **Bills Tracker**: Log, categorize, and track individual bills to stay on top of payments.
+- **Renewals Tracking** *(In Progress)*: Manage and set reminders for annual/monthly subscriptions.
+- **Documents Vault** *(In Progress)*: A safe space to upload and store important personal files.
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Frontend**: React (v19)
+- **Build Tool**: Vite
+- **Icons**: Lucide React
+- **Routing**: React Router DOM (v7)
+- **Styling**: Vanilla CSS with custom design tokens (dark mode)
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+To run the project locally, follow these steps:
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/bhavesh-210/Life_Admin_Hub.git
+   ```
+
+2. **Navigate into the directory**:
+   ```bash
+   cd Life_Admin_Hub
+   ```
+
+3. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+
+4. **Run the development server**:
+   ```bash
+   npm run dev
+   ```
+
+Open `http://localhost:5173` in your browser to view the application.
+
+## Available Scripts
+
+- `npm run dev`: Runs the app in development mode.
+- `npm run build`: Builds the production-ready app in the `dist` folder.
+- `npm run preview`: Previews the production build locally.
