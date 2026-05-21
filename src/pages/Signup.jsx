@@ -17,7 +17,7 @@ export default function Signup({ setIsLoggedIn }) {
     return (
         <div className="auth-page">
             <form onSubmit={handleSubmit} className="auth-card">
-                <h1>Create account</h1>
+                <h1 className="text-2xl font-black">Create account</h1>
 
                 {/* Name input */}
                 <input
@@ -44,17 +44,14 @@ export default function Signup({ setIsLoggedIn }) {
                 />
 
                 {/* Signup button */}
-                <button className="btn btn-dark" style={{ width: '100%' }}>
-                    Signup
-                </button>
+                <button className="btn btn-dark w-full">Signup</button>
 
                 {/* Link to login */}
-                <p
-                    style={{
-                        marginTop: '20px',
-                        color: '#78716c',
-                    }}>
-                    Already have account? <Link to="/login">Login</Link>
+                <p className="mt-5 text-text-muted text-center">
+                    Already have account?{' '}
+                    <Link to="/login" className="font-bold underline">
+                        Login
+                    </Link>
                 </p>
             </form>
         </div>

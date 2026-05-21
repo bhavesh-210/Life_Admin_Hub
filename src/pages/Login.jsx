@@ -20,7 +20,7 @@ export default function Login({ setIsLoggedIn }) {
         <div className="auth-page">
             {/* Login form */}
             <form onSubmit={handleSubmit} className="auth-card">
-                <h1>Welcome back</h1>
+                <h1 className="text-2xl font-black">Welcome back</h1>
 
                 {/* Email input */}
                 <input
@@ -39,17 +39,14 @@ export default function Login({ setIsLoggedIn }) {
                 />
 
                 {/* Submit button */}
-                <button className="btn btn-dark" style={{ width: '100%' }}>
-                    Login
-                </button>
+                <button className="btn btn-dark w-full">Login</button>
 
                 {/* Link to signup */}
-                <p
-                    style={{
-                        marginTop: '20px',
-                        color: '#78716c',
-                    }}>
-                    New user? <Link to="/signup">Create account</Link>
+                <p className="mt-5 text-text-muted text-center">
+                    New user?{' '}
+                    <Link to="/signup" className="font-bold underline">
+                        Create account
+                    </Link>
                 </p>
             </form>
         </div>

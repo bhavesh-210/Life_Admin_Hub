@@ -1,22 +1,23 @@
-// Component to render a single bill item
 export default function BillCard({ bill, toggleStatus }) {
-    // Badge color depend karta hai status pe
-    const badgeClass = bill.status === 'Paid' ? 'badge-green' : 'badge-red';
+    const isPaid = bill.status === 'Paid';
 
     return (
-        <div className="list-item">
-            <div>
-                {/* Bill name and metadata */}
-                <h3>{bill.name}</h3>
-                <p>
-                    {bill.category} • ₹{bill.amount} • Due {bill.dueDate}
-                </p>
+        <div className="flex items-center justify-between bg-white/50 border border-white/60 p-4 rounded-2xl hover:bg-white/70 transition-colors cursor-pointer" onClick={() => toggleStatus(bill.id)}>
+            <div className="flex items-center gap-4">
+                <div className={`w-12 h-12 rounded-2xl flex items-center justify-center text-xl shadow-inner ${isPaid ? 'bg-emerald-100 text-emerald-600' : 'bg-rose-100 text-rose-600'}`}>
+                    {isPaid ? '✅' : '⏳'}
+                </div>
+                <div>
+                    <h3 className="font-bold text-slate-800">{bill.name}</h3>
+                    <p className="text-sm text-slate-500">
+                        {bill.category} • ₹{bill.amount} • Due {bill.dueDate}
+                    </p>
+                </div>
             </div>
 
-            {/* Status button — click se toggle function call hota hai */}
             <button
-                onClick={() => toggleStatus(bill.id)}
-                className={`badge ${badgeClass}`}>
+                onClick={(e) => { e.stopPropagation(); toggleStatus(bill.id); }}
+                className={`text-xs font-bold border px-4 py-2 rounded-full transition-all ${isPaid ? 'bg-emerald-100 text-emerald-700 border-emerald-200/50 hover:bg-emerald-200' : 'bg-rose-100 text-rose-700 border-rose-200/50 hover:bg-rose-200'}`}>
                 {bill.status}
             </button>
         </div>

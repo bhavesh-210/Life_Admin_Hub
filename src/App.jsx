@@ -3,8 +3,6 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { useState } from 'react';
 
 import Landing from './pages/Landing';
-import Login from './pages/Login';
-import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
 import Bills from './pages/Bills';
 import Documents from './pages/Documents';
@@ -12,83 +10,43 @@ import Renewals from './pages/Renewals';
 import Appointments from './pages/Appointments';
 import Sidebar from './components/Sidebar';
 
-// ProtectedRoute: agar user logged in nahi hai to login page pe bhej do
+// ProtectedRoute
 function ProtectedRoute({ isLoggedIn, children }) {
-    if (!isLoggedIn) return <Navigate to="/login" />;
+    if (!isLoggedIn) return <Navigate to="/" />;
 
     return (
-        <div className="layout">
-            {/* Sidebar aur main content layout */}
+        <div className="flex min-h-screen">
             <Sidebar />
-            <div className="main-content">{children}</div>
+            <div className="flex-grow ml-64 p-8 relative z-10">{children}</div>
         </div>
     );
 }
 
 export default function App() {
-    // Simple auth state (demo)
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     return (
-        <Routes>
-            <Route path="/" element={<Landing />} />
-            <Route
-                path="/login"
-                element={<Login setIsLoggedIn={setIsLoggedIn} />}
-            />
-            <Route
-                path="/signup"
-                element={<Signup setIsLoggedIn={setIsLoggedIn} />}
-            />
+        <div className="relative min-h-screen overflow-x-hidden flex flex-col">
+            {/* Global Ambient Background Engine */}
+            <div className="ambient-engine fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+                <div className="color-blob indigo-blob"></div>
+                <div className="color-blob cyan-blob"></div>
+                <div className="color-blob pink-blob"></div>
+            </div>
 
-            {/* Protected app routes */}
-            <Route
-                path="/dashboard"
-                element={
-                    <ProtectedRoute isLoggedIn={isLoggedIn}>
-                        <Dashboard />
-                    </ProtectedRoute>
-                }
-            />
+            <Routes>
+                <Route path="/" element={<Landing setIsLoggedIn={setIsLoggedIn} />} />
 
-            <Route
-                path="/bills"
-                element={
-                    <ProtectedRoute isLoggedIn={isLoggedIn}>
-                        <Bills />
-                    </ProtectedRoute>
-                }
-            />
+                {/* Protected app routes */}
+                <Route path="/dashboard" element={<ProtectedRoute isLoggedIn={isLoggedIn}><Dashboard /></ProtectedRoute>} />
+                <Route path="/bills" element={<ProtectedRoute isLoggedIn={isLoggedIn}><Bills /></ProtectedRoute>} />
+                <Route path="/documents" element={<ProtectedRoute isLoggedIn={isLoggedIn}><Documents /></ProtectedRoute>} />
+                <Route path="/renewals" element={<ProtectedRoute isLoggedIn={isLoggedIn}><Renewals /></ProtectedRoute>} />
+                <Route path="/appointments" element={<ProtectedRoute isLoggedIn={isLoggedIn}><Appointments /></ProtectedRoute>} />
 
-            <Route
-                path="/documents"
-                element={
-                    <ProtectedRoute isLoggedIn={isLoggedIn}>
-                        <Documents />
-                    </ProtectedRoute>
-                }
-            />
-
-            <Route
-                path="/renewals"
-                element={
-                    <ProtectedRoute isLoggedIn={isLoggedIn}>
-                        <Renewals />
-                    </ProtectedRoute>
-                }
-            />
-
-            <Route
-                path="/appointments"
-                element={
-                    <ProtectedRoute isLoggedIn={isLoggedIn}>
-                        <Appointments />
-                    </ProtectedRoute>
-                }
-            />
-
-            {/* Default fallback */}
-            <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
+                {/* Default fallback */}
+                <Route path="*" element={<Navigate to="/" />} />
+            </Routes>
+        </div>
     );
 }
