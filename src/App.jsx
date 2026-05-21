@@ -8,6 +8,7 @@ import Bills from './pages/Bills';
 import Documents from './pages/Documents';
 import Renewals from './pages/Renewals';
 import Appointments from './pages/Appointments';
+import Profile from './pages/Profile';
 import Sidebar from './components/Sidebar';
 
 // ProtectedRoute
@@ -43,6 +44,7 @@ export default function App() {
                 <Route path="/documents" element={<ProtectedRoute isLoggedIn={isLoggedIn}><Documents /></ProtectedRoute>} />
                 <Route path="/renewals" element={<ProtectedRoute isLoggedIn={isLoggedIn}><Renewals /></ProtectedRoute>} />
                 <Route path="/appointments" element={<ProtectedRoute isLoggedIn={isLoggedIn}><Appointments /></ProtectedRoute>} />
+                <Route path="/profile" element={<ProtectedRoute isLoggedIn={isLoggedIn}><Profile /></ProtectedRoute>} />
 
                 {/* Default fallback */}
                 <Route path="*" element={<Navigate to="/" />} />
