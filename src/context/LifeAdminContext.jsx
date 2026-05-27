@@ -99,6 +99,12 @@ export function LifeAdminProvider({ children }) {
     ]));
 
 
+    const [renewals, setRenewals] = useState(() => getStored('life_admin_renewals', [
+        { id: '1', name: 'Vehicle Insurance', category: 'Insurance', date: '20 June 2026', status: 'Due Soon' },
+        { id: '2', name: 'Netflix Premium', category: 'Subscription', date: '05 July 2026', status: 'Scheduled' },
+        { id: '3', name: 'Driving License', category: 'Document', date: '12 Aug 2026', status: 'Scheduled' }
+    ]));
+
     const [profile, setProfile] = useState(() => getStored('life_admin_profile', {
         name: 'Admin User',
         email: 'admin@example.com',
@@ -144,6 +150,10 @@ export function LifeAdminProvider({ children }) {
     useEffect(() => {
         localStorage.setItem('life_admin_profile', JSON.stringify(profile));
     }, [profile]);
+
+    useEffect(() => {
+        localStorage.setItem('life_admin_renewals', JSON.stringify(renewals));
+    }, [renewals]);
 
     useEffect(() => {
         localStorage.setItem('life_admin_settings', JSON.stringify(settings));
@@ -207,6 +217,19 @@ export function LifeAdminProvider({ children }) {
             const appt = prev.find((a) => a.id === id);
             if (appt) addToast(`Appointment "${appt.title}" deleted.`);
             return prev.filter((a) => a.id !== id);
+        });
+    };
+
+    const addRenewal = (renewal) => {
+        setRenewals((prev) => [renewal, ...prev]);
+        addToast(`Renewal "${renewal.name}" scheduled.`);
+    };
+
+    const deleteRenewal = (id) => {
+        setRenewals((prev) => {
+            const ren = prev.find((r) => r.id === id);
+            if (ren) addToast(`Renewal "${ren.name}" deleted.`);
+            return prev.filter((r) => r.id !== id);
         });
     };
 
@@ -367,6 +390,9 @@ export function LifeAdminProvider({ children }) {
                 deleteDocument,
                 addAppointment,
                 deleteAppointment,
+                renewals,
+                addRenewal,
+                deleteRenewal,
                 diaries,
                 diaryEntries: diaries,
                 addDiary,
