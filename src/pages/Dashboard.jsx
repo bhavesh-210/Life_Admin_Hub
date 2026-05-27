@@ -2,14 +2,14 @@ import StatCard from '../components/StatCard';
 import { useLifeAdmin } from '../context/LifeAdminContext';
 
 export default function Dashboard() {
-    const { bills, documents, appointments } = useLifeAdmin();
+    const { bills, documents, appointments, renewals } = useLifeAdmin();
 
     // Calculate dynamic stats
     const paidBills = bills.filter((b) => b.status === 'Paid');
     const totalSpending = paidBills.reduce((total, b) => total + b.amount, 0);
 
-    // Get upcoming renewals (documents with renewal dates)
-    const upcomingRenewals = documents.filter((doc) => doc.renewalDate);
+    // Get upcoming renewals from the renewals context
+    const upcomingRenewals = renewals;
 
     // Get upcoming appointments
     const upcomingAppointmentsCount = appointments.length;
@@ -72,16 +72,18 @@ export default function Dashboard() {
                 <div className="card shadow-[4px_4px_0_0_rgba(15,23,42,0.05)]">
                     <h2 className="section-title">// UPCOMING RENEWALS</h2>
                     <div className="space-y-3">
-                        {upcomingRenewals.slice(0, 4).map((renewal) => (
+                        {upcomingRenewals.length === 0 ? (
+                            <p className="text-xs font-mono opacity-50 text-center py-4">No renewals scheduled.</p>
+                        ) : upcomingRenewals.slice(0, 4).map((renewal) => (
                             <div key={renewal.id} className="flex items-center justify-between p-3.5 border-[1.5px] border-slate-900/10 dark:border-slate-100/10 hover:border-slate-900 dark:hover:border-slate-100 transition-all rounded">
                                 <div>
-                                    <h3 className="font-extrabold text-sm uppercase tracking-wide">{renewal.title}</h3>
+                                    <h3 className="font-extrabold text-sm uppercase tracking-wide">{renewal.name}</h3>
                                     <p className="text-xs font-mono opacity-65 mt-0.5">
-                                        Type: {renewal.type} • Expires: {renewal.renewalDate}
+                                        {renewal.category} • Expires: {renewal.date}
                                     </p>
                                 </div>
-                                <span className="badge badge-blue">
-                                    Scanned
+                                <span className={`badge ${renewal.status === 'Due Soon' ? 'badge-red' : 'badge-blue'}`}>
+                                    {renewal.status}
                                 </span>
                             </div>
                         ))}
