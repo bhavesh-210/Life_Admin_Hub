@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useLifeAdmin } from '../context/LifeAdminContext';
 import DocumentCard from '../components/DocumentCard';
 
@@ -12,6 +12,7 @@ export default function Documents() {
     const [progress, setProgress] = useState(0);
     const [scanText, setScanText] = useState('Reading document...');
     const [newDocData, setNewDocData] = useState({ title: '', category: 'Other' });
+    const fileInputRef = useRef(null);
 
     const [selectedDoc, setSelectedDoc] = useState(null); // Document selected for preview modal
 
@@ -38,6 +39,26 @@ export default function Documents() {
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
+        // Trigger the hidden file input
+        if (fileInputRef.current) {
+            fileInputRef.current.click();
+        }
+    };
+
+    const handleFileSelect = (e) => {
+        if (e.target.files && e.target.files.length > 0) {
+            const file = e.target.files[0];
+            
+            // Auto-fill title if it was somehow empty, using the file name
+            if (!newDocData.title) {
+                setNewDocData(prev => ({...prev, title: file.name.split('.')[0]}));
+            }
+            
+            startScan();
+        }
+    };
+
+    const startScan = () => {
         setUploadState('scanning');
         
         let currentProgress = 0;
@@ -445,6 +466,15 @@ export default function Documents() {
                                     </div>
                                 </div>
 
+                                {/* Hidden file input triggered by the button below */}
+                                <input 
+                                    type="file" 
+                                    className="hidden" 
+                                    ref={fileInputRef} 
+                                    onChange={handleFileSelect} 
+                                    accept=".pdf,.jpg,.jpeg,.png"
+                                />
+                                
                                 <button type="submit" className="w-full border-2 border-dashed border-slate-300 dark:border-slate-700 hover:border-slate-900 dark:hover:border-slate-100 rounded p-6 bg-slate-50 dark:bg-slate-900 cursor-pointer transition-colors group">
                                     <div className="w-10 h-10 mx-auto rounded border-[1.5px] border-slate-900 dark:border-slate-100 bg-white dark:bg-slate-800 flex items-center justify-center text-customAccent mb-3 shadow-sm group-hover:scale-105 transition-transform">
                                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
