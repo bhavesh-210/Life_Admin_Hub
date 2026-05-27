@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+    darkMode: 'class',
     content: ['./index.html', './src/**/*.{js,jsx}'],
     theme: {
         extend: {
@@ -11,7 +12,11 @@ export default {
                 'border-light': '#e7e2da',
                 'border-subtle': '#d6d3ce',
                 'bg-light': '#fbfaf8',
-                'bg-page': '#f7f5f0',
+                'bg-page': 'var(--bg-page, #f7f5f0)',
+                'dark-page': 'var(--bg-dark-page, #020617)',
+                customAccent: 'var(--theme-accent)',
+                customHover: 'var(--theme-hover)',
+                customHoverDark: 'var(--theme-hover-dark)',
             },
             borderRadius: {
                 card: '22px',
