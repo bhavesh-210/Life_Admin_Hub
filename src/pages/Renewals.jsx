@@ -84,29 +84,37 @@ export default function Renewals() {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    {filteredRenewals.map((renewal) => (
-                        <div key={renewal.id} className="editorial-card p-6 flex flex-col items-start shadow-[3px_3px_0_0_rgba(15,23,42,0.05)] relative group transition-all hover:-translate-y-1">
-                            <button 
-                                onClick={() => deleteRenewal(renewal.id)}
-                                className="absolute top-4 right-4 text-slate-400 hover:text-rose-500 opacity-0 group-hover:opacity-100 transition-opacity"
-                            >
-                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
-                            </button>
-                            <div className={`w-10 h-10 border-[1.5px] border-slate-900 dark:border-slate-100 bg-slate-50 dark:bg-slate-800 flex items-center justify-center rounded mb-4 ${renewal.category === 'Insurance' ? 'text-emerald-500' : renewal.category === 'Subscription' ? 'text-rose-500' : 'text-blue-500'}`}>
-                                {getIcon(renewal.category)}
-                            </div>
-                            <h2 className="font-extrabold text-lg uppercase tracking-wide pr-8">{renewal.name}</h2>
-                            <p className="mt-2 text-xs font-mono opacity-65 uppercase">Renew before: {renewal.date}</p>
-                            <span className={`badge mt-4 font-mono ${renewal.status === 'Due Soon' ? 'badge-red' : 'badge-blue'}`}>
-                                {renewal.status}
-                            </span>
+                    {renewals.length === 0 ? (
+                        <div className="col-span-1 md:col-span-3 text-center py-16 px-4 bg-slate-50 dark:bg-slate-900/50 border-[1.5px] border-dashed border-slate-300 dark:border-slate-700 rounded">
+                            <svg className="w-16 h-16 mx-auto mb-4 text-slate-400 dark:text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <h3 className="font-extrabold uppercase tracking-tight text-lg mb-2">No Trackers Set</h3>
+                            <p className="text-xs font-mono text-slate-500 mb-6 max-w-sm mx-auto">Your renewal registry is empty. Add a subscription, insurance, or document to start tracking expiries.</p>
+                            <button onClick={() => setIsAddModalOpen(true)} className="btn btn-dark">Create Tracker</button>
                         </div>
-                    ))}
-                    {filteredRenewals.length === 0 && (
+                    ) : filteredRenewals.length === 0 ? (
                         <div className="col-span-1 md:col-span-3 text-center py-12 text-slate-400 dark:text-slate-500">
                             <svg className="w-10 h-10 mx-auto mb-3 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
                             <p className="font-extrabold uppercase tracking-tight text-sm">No match</p>
                         </div>
+                    ) : (
+                        filteredRenewals.map((renewal) => (
+                            <div key={renewal.id} className="editorial-card p-6 flex flex-col items-start shadow-[3px_3px_0_0_rgba(15,23,42,0.05)] relative group transition-all hover:-translate-y-1">
+                                <button 
+                                    onClick={() => deleteRenewal(renewal.id)}
+                                    className="absolute top-4 right-4 text-slate-400 hover:text-rose-500 opacity-0 group-hover:opacity-100 transition-opacity"
+                                >
+                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                                </button>
+                                <div className={`w-10 h-10 border-[1.5px] border-slate-900 dark:border-slate-100 bg-slate-50 dark:bg-slate-800 flex items-center justify-center rounded mb-4 ${renewal.category === 'Insurance' ? 'text-emerald-500' : renewal.category === 'Subscription' ? 'text-rose-500' : 'text-blue-500'}`}>
+                                    {getIcon(renewal.category)}
+                                </div>
+                                <h2 className="font-extrabold text-lg uppercase tracking-wide pr-8">{renewal.name}</h2>
+                                <p className="mt-2 text-xs font-mono opacity-65 uppercase">Renew before: {renewal.date}</p>
+                                <span className={`badge mt-4 font-mono ${renewal.status === 'Due Soon' ? 'badge-red' : 'badge-blue'}`}>
+                                    {renewal.status}
+                                </span>
+                            </div>
+                        ))
                     )}
                 </div>
             </div>

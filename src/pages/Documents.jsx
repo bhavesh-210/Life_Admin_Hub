@@ -362,7 +362,14 @@ export default function Documents() {
                     />
                 </div>
 
-                {filteredDocs.length > 0 ? (
+                {documents.length === 0 ? (
+                    <div className="text-center py-16 px-4 bg-slate-50 dark:bg-slate-900/50 border-[1.5px] border-dashed border-slate-300 dark:border-slate-700 rounded">
+                        <svg className="w-16 h-16 mx-auto mb-4 text-slate-400 dark:text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                        <h3 className="font-extrabold uppercase tracking-tight text-lg mb-2">Vault is Empty</h3>
+                        <p className="text-xs font-mono text-slate-500 mb-6 max-w-sm mx-auto">Upload documents to safely store and extract details using OCR capabilities.</p>
+                        <button onClick={handleUploadClick} className="btn btn-dark">Upload Document</button>
+                    </div>
+                ) : filteredDocs.length > 0 ? (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                         {filteredDocs.map((doc) => (
                             <DocumentCard key={doc.id} document={doc} onView={setSelectedDoc} />
