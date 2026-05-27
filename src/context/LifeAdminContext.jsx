@@ -100,9 +100,9 @@ export function LifeAdminProvider({ children }) {
 
 
     const [profile, setProfile] = useState(() => getStored('life_admin_profile', {
-        name: 'Bhavesh Sharma',
-        email: 'bhavesh@example.com',
-        avatar: 'BS',
+        name: 'Admin User',
+        email: 'admin@example.com',
+        avatar: 'AU',
         plan: 'Pro Plan'
     }));
 

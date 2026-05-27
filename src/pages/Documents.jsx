@@ -101,8 +101,8 @@ export default function Documents() {
                                 PHOTO
                             </div>
                             <div className="text-[8px] space-y-1">
-                                <div><span className="opacity-50 uppercase font-sans">Surname:</span> SHARMA</div>
-                                <div><span className="opacity-50 uppercase font-sans">Given Names:</span> BHAVESH</div>
+                                <div><span className="opacity-50 uppercase font-sans">Surname:</span> USER</div>
+                                <div><span className="opacity-50 uppercase font-sans">Given Names:</span> ADMIN</div>
                                 <div><span className="opacity-50 uppercase font-sans">Nationality:</span> INDIAN</div>
                                 <div><span className="opacity-50 uppercase font-sans">Date of Birth:</span> 14/08/1996</div>
                             </div>
@@ -135,7 +135,7 @@ export default function Documents() {
                                 BS
                             </div>
                             <div className="text-[8px] space-y-0.5 flex-1">
-                                <div><span className="opacity-50">Name:</span> BHAVESH SHARMA</div>
+                                <div><span className="opacity-50">Name:</span> ADMIN USER</div>
                                 <div><span className="opacity-50">DL No:</span> DL-14-2021008453</div>
                                 <div><span className="opacity-50">DOB:</span> 14-08-1996</div>
                                 <div><span className="opacity-50">Class:</span> LMV, MCWG</div>
@@ -165,7 +165,7 @@ export default function Documents() {
                     </div>
                     <div className="grid grid-cols-2 gap-3 mb-4 text-[9px]">
                         <div><span className="opacity-55 block uppercase font-sans">Policy Number:</span> <span className="font-bold">2315-9874-2025-A</span></div>
-                        <div><span className="opacity-55 block uppercase font-sans">Insured Name:</span> <span className="font-bold">Bhavesh Sharma</span></div>
+                        <div><span className="opacity-55 block uppercase font-sans">Insured Name:</span> <span className="font-bold">Admin User</span></div>
                         <div><span className="opacity-55 block uppercase font-sans">Vehicle Model:</span> <span className="font-bold">Hyundai Verna Sedan</span></div>
                         <div><span className="opacity-55 block uppercase font-sans">Period of Cover:</span> <span className="font-bold">20 Jun 25 to {doc.renewalDate || '20 Jun 26'}</span></div>
                     </div>
@@ -194,7 +194,7 @@ export default function Documents() {
                         <svg className="w-5 h-5 text-slate-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
                     </div>
                     <div className="my-2 text-[8px] space-y-1.5">
-                        <div><span className="opacity-55 block font-sans text-[7px] uppercase">Primary Insured</span> <span className="font-bold text-xs">BHAVESH SHARMA</span></div>
+                        <div><span className="opacity-55 block font-sans text-[7px] uppercase">Primary Insured</span> <span className="font-bold text-xs">ADMIN USER</span></div>
                         <div className="grid grid-cols-2 gap-2">
                             <div><span className="opacity-55 block font-sans text-[7px] uppercase">Card Number</span> <span className="font-bold">STAR-87654321</span></div>
                             <div><span className="opacity-55 block font-sans text-[7px] uppercase">Sum Insured</span> <span className="font-bold">₹5,00,000</span></div>
@@ -218,7 +218,7 @@ export default function Documents() {
                     <div className="space-y-1 text-[9px] mb-3">
                         <div className="flex justify-between"><span className="opacity-55">Assessment Year:</span> <span className="font-bold">2026-27</span></div>
                         <div className="flex justify-between"><span className="opacity-55">PAN Card No:</span> <span className="font-bold">BPMPS8540G</span></div>
-                        <div className="flex justify-between"><span className="opacity-55">Assessee Name:</span> <span className="font-bold">Bhavesh Sharma</span></div>
+                        <div className="flex justify-between"><span className="opacity-55">Assessee Name:</span> <span className="font-bold">Admin User</span></div>
                     </div>
                     <div className="border-t border-slate-200 dark:border-slate-800 pt-2.5 space-y-1.5 text-[8px]">
                         <div className="flex justify-between font-bold border-b border-slate-100 dark:border-slate-900 pb-1"><span>Income Head</span><span className="text-right">Amount</span></div>
@@ -264,19 +264,19 @@ export default function Documents() {
         if (!doc) return '';
         const lowercaseTitle = doc.title.toLowerCase();
         if (lowercaseTitle.includes('passport')) {
-            return `REPUBLIC OF INDIA / RÉPUBLIQUE D'INDE\nPASSPORT / PASSEPORT\nType: P | Code: IND | Passport No: P987654321\nSurname: SHARMA\nGiven Names: BHAVESH\nNationality: INDIAN\nSex: M | Date of Birth: 14/08/1996\nPlace of Issue: DELHI\nDate of Issue: 21/01/2018\nDate of Expiry: 20/01/2028\nP<INDSHARMA<<BHAVESH<<<<<<<<<<<<<<<<<<<<<<<\nP9876543212IND9608144M2801208<<<<<<<<<<<<<<<0`;
+            return `REPUBLIC OF INDIA / RÉPUBLIQUE D'INDE\nPASSPORT / PASSEPORT\nType: P | Code: IND | Passport No: P987654321\nSurname: USER\nGiven Names: ADMIN\nNationality: INDIAN\nSex: M | Date of Birth: 14/08/1996\nPlace of Issue: DELHI\nDate of Issue: 21/01/2018\nDate of Expiry: 20/01/2028\nP<INDUSER<<ADMIN<<<<<<<<<<<<<<<<<<<<<<<\nP9876543212IND9608144M2801208<<<<<<<<<<<<<<<0`;
         }
         if (lowercaseTitle.includes('license') || lowercaseTitle.includes('driving')) {
-            return `UNION OF INDIA - INDIAN DRIVING LICENSE\nLicence No: DL-14-2021008453\nName: BHAVESH SHARMA\nS/O: R.K. SHARMA\nDOB: 14-08-1996\nAddress: Sector 12, Dwarka, New Delhi, 110075\nAuthorised Class: LMV, MCWG\nDate of Issue: 13-08-2021\nValidity Expiry: 12 Aug 2026\nAuthority: STATE TRANSPORT COMMISSIONER DELHI`;
+            return `UNION OF INDIA - INDIAN DRIVING LICENSE\nLicence No: DL-14-2021008453\nName: ADMIN USER\nS/O: R.K. USER\nDOB: 14-08-1996\nAddress: Sector 12, Dwarka, New Delhi, 110075\nAuthorised Class: LMV, MCWG\nDate of Issue: 13-08-2021\nValidity Expiry: 12 Aug 2026\nAuthority: STATE TRANSPORT COMMISSIONER DELHI`;
         }
         if (lowercaseTitle.includes('insurance') && doc.type === 'Vehicle') {
-            return `HDFC ERGO GENERAL INSURANCE COMPANY LTD.\nCERTIFICATE OF INSURANCE AND POLICY SCHEDULE\nPolicy No: 2315-9874-2025-A\nInsured: BHAVESH SHARMA\nVehicle Make/Model: HYUNDAI VERNA\nReg No: DL-3C-CA-1234\nChassis No: MALB3124567890\nCover Period: 20/06/2025 00:00 to 20/06/2026 23:59\nIDV (Sum Insured): Rs. 4,50,000\nThird Party Liability: Rs. Unlimited\nNet Premium Paid: Rs. 4,500`;
+            return `HDFC ERGO GENERAL INSURANCE COMPANY LTD.\nCERTIFICATE OF INSURANCE AND POLICY SCHEDULE\nPolicy No: 2315-9874-2025-A\nInsured: ADMIN USER\nVehicle Make/Model: HYUNDAI VERNA\nReg No: DL-3C-CA-1234\nChassis No: MALB3124567890\nCover Period: 20/06/2025 00:00 to 20/06/2026 23:59\nIDV (Sum Insured): Rs. 4,50,000\nThird Party Liability: Rs. Unlimited\nNet Premium Paid: Rs. 4,500`;
         }
         if (lowercaseTitle.includes('insurance') && doc.type === 'Medical') {
-            return `STAR HEALTH AND ALLIED INSURANCE CO. LTD.\nHEALTH INSURANCE CARD\nCard No: STAR-87654321\nPolicy Holder: BHAVESH SHARMA\nProduct Name: Family Health Optima Insurance Plan\nSum Insured: Rs. 5,00,000\nCoverage Period: 05/09/2025 to 05/09/2026\nBeneficiary ID: STARBHSH96\nTPA Helpline: 1800 425 2255 (Cashless Desk)`;
+            return `STAR HEALTH AND ALLIED INSURANCE CO. LTD.\nHEALTH INSURANCE CARD\nCard No: STAR-87654321\nPolicy Holder: ADMIN USER\nProduct Name: Family Health Optima Insurance Plan\nSum Insured: Rs. 5,00,000\nCoverage Period: 05/09/2025 to 05/09/2026\nBeneficiary ID: STARADUS96\nTPA Helpline: 1800 425 2255 (Cashless Desk)`;
         }
         if (lowercaseTitle.includes('tax') || lowercaseTitle.includes('return')) {
-            return `INCOME TAX DEPARTMENT - GOVERNMENT OF INDIA\nFORM 16 - ASSESSMENT YEAR 2026-27 (FY 2025-26)\nTax Return Acknowledgement - ITR-1 (SAHAJ)\nAssessee: BHAVESH SHARMA\nPAN: BPMPS8540G\nFiling Status: 139(1) - Original\nGross Salary Income: Rs. 12,40,000\nDeductions Sec 80C/D: Rs. 1,50,000\nTaxable Income: Rs. 10,90,000\nTax Liability computed: Rs. 1,12,450\nTotal TDS Deducted: Rs. 1,12,450\nRefund / Tax Due: Rs. 0.00`;
+            return `INCOME TAX DEPARTMENT - GOVERNMENT OF INDIA\nFORM 16 - ASSESSMENT YEAR 2026-27 (FY 2025-26)\nTax Return Acknowledgement - ITR-1 (SAHAJ)\nAssessee: ADMIN USER\nPAN: BPMPS8540G\nFiling Status: 139(1) - Original\nGross Salary Income: Rs. 12,40,000\nDeductions Sec 80C/D: Rs. 1,50,000\nTaxable Income: Rs. 10,90,000\nTax Liability computed: Rs. 1,12,450\nTotal TDS Deducted: Rs. 1,12,450\nRefund / Tax Due: Rs. 0.00`;
         }
         return `DOCUMENT OCR EXTRACT\nTitle: ${doc.title}\nCategory: ${doc.type}\nUpload Date: ${doc.uploadDate || 'N/A'}\nFile Size: ${doc.fileSize || 'N/A'}\nNotes: ${doc.notes || 'N/A'}\n\n[Parsed OCR text elements...]\n- Decrypted key value parameters.\n- Secure storage fingerprint match.\n- Digital signature check passed.`;
     };

@@ -28,7 +28,7 @@ export default function Appointments() {
                     category: 'Personal',
                     date: '20 June',
                     time: '7:00 PM',
-                    notes: 'Family dinner at Olive Garden. Reservation under Bhavesh.',
+                    notes: 'Family dinner at Olive Garden. Reservation under Admin.',
                     isSynced: true
                 };
                 
@@ -134,7 +134,7 @@ export default function Appointments() {
                 </div>
                 
                 <div className="space-y-2 my-4 border-t border-b border-dashed border-slate-900/30 py-4 text-[10px]">
-                    <div><span className="opacity-55">NAME:</span> Bhavesh Sharma</div>
+                    <div><span className="opacity-55">NAME:</span> Admin User</div>
                     <div><span className="opacity-55">TYPE:</span> {appt.category} Node</div>
                     <div><span className="opacity-55">INFO:</span> {appt.notes || 'No notes available'}</div>
                 </div>
