@@ -120,7 +120,7 @@ export default function Landing({ setIsLoggedIn }) {
                     <div className="w-9 h-9 border-[1.5px] border-slate-900 dark:border-slate-100 bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 flex items-center justify-center font-black text-xl rounded">
                         L
                     </div>
-                    <span className="font-extrabold text-xl uppercase tracking-tight">Life Admin Hub</span>
+                    <span className="font-extrabold text-xl uppercase tracking-tight">Admin Hub</span>
                 </div>
                 <div className="hidden md:flex gap-8 text-xs font-mono font-bold uppercase tracking-wider">
                     <a href="#about" className="opacity-60 hover:opacity-100 transition-opacity">/ Features</a>
@@ -274,7 +274,7 @@ export default function Landing({ setIsLoggedIn }) {
 
             {/* Footer */}
             <footer className="w-full py-8 border-t border-slate-200 dark:border-slate-800 max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-mono">
-                <div className="text-slate-500">&copy; 2026 Life Admin Hub. Built for precision.</div>
+                <div className="text-slate-500">&copy; 2026 Admin Hub. Built for precision.</div>
                 <div className="flex gap-6 text-slate-500">
                     <a href="#" className="hover:text-slate-900 dark:hover:text-white transition-colors">Privacy Policy</a>
                     <a href="#" className="hover:text-slate-900 dark:hover:text-white transition-colors">Terms</a>
