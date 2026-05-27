@@ -89,7 +89,7 @@ export default function Sidebar({ isMobileMenuOpen, setIsMobileMenuOpen }) {
                     <div className="flex items-center justify-between mb-4 gap-2">
                         <div className="flex items-center gap-2 truncate">
                             <div className="w-8 h-8 border-[1.5px] border-slate-900 dark:border-slate-100 flex items-center justify-center text-xs font-mono font-bold flex-shrink-0 bg-white dark:bg-slate-800 rounded">
-                                {profile.avatar}
+                                {liveAvatar}
                             </div>
                             <div className="truncate">
                                 <div className="font-extrabold text-xs text-slate-900 dark:text-slate-100 truncate">{profile.name}</div>
