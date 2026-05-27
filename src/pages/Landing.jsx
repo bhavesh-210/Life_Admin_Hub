@@ -127,8 +127,8 @@ export default function Landing({ setIsLoggedIn }) {
                 </div>
                 <div className="hidden md:flex gap-8 text-xs font-mono font-bold uppercase tracking-wider">
                     <a href="#about" className="opacity-60 hover:opacity-100 transition-opacity">/ Features</a>
-                    <a href="#" className="opacity-60 hover:opacity-100 transition-opacity">/ Workflow</a>
-                    <a href="#" className="opacity-60 hover:opacity-100 transition-opacity">/ Pricing</a>
+                    <a href="#workflow" className="opacity-60 hover:opacity-100 transition-opacity">/ Workflow</a>
+                    <a href="#pricing" className="opacity-60 hover:opacity-100 transition-opacity">/ Pricing</a>
                 </div>
                 <div className="flex gap-3 items-center">
                     <button 
@@ -270,6 +270,91 @@ export default function Landing({ setIsLoggedIn }) {
                             <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed font-sans">
                                 Log your daily reflections, work sessions, thoughts, and ideas in a dedicated private and search-indexed diary.
                             </p>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Workflow Section */}
+                <section id="workflow" className="w-full px-6 py-20 bg-white dark:bg-slate-900">
+                    <div className="max-w-7xl mx-auto">
+                        <div className="text-center mb-16">
+                            <div className="inline-block border-[1.5px] border-slate-900 dark:border-slate-100 px-2 py-0.5 font-mono text-[9px] uppercase font-bold tracking-widest bg-slate-50 dark:bg-slate-800 rounded mb-3">
+                                // WORKFLOW ARCHITECTURE
+                            </div>
+                            <h2 className="text-3xl font-extrabold uppercase tracking-tight">How Data Flows.</h2>
+                            <p className="text-slate-500 dark:text-slate-400 font-mono text-xs mt-2 max-w-md mx-auto">
+                                Admin Hub processes unstructured data and translates it into operational metrics for your dashboard.
+                            </p>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            <div className="p-8 border-[1.5px] border-slate-900 dark:border-slate-100 rounded relative">
+                                <div className="absolute -top-4 -left-4 w-10 h-10 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 flex items-center justify-center font-black rounded border-[1.5px] border-slate-900 dark:border-slate-100">01</div>
+                                <h3 className="font-extrabold uppercase tracking-wide text-lg mb-2 mt-2">Initialize Node</h3>
+                                <p className="text-xs text-slate-500 dark:text-slate-400 font-mono leading-relaxed">
+                                    Upload raw files (passports, bills, medical cards) or connect your email provider for automatic sync.
+                                </p>
+                            </div>
+                            <div className="p-8 border-[1.5px] border-slate-900 dark:border-slate-100 rounded relative bg-slate-50 dark:bg-slate-950">
+                                <div className="absolute -top-4 -left-4 w-10 h-10 bg-indigo-500 text-white flex items-center justify-center font-black rounded border-[1.5px] border-slate-900 dark:border-slate-100">02</div>
+                                <h3 className="font-extrabold uppercase tracking-wide text-lg mb-2 mt-2">OCR Extraction</h3>
+                                <p className="text-xs text-slate-500 dark:text-slate-400 font-mono leading-relaxed">
+                                    The engine scans binaries, extracts expiry dates, policy numbers, and financial outflow metrics automatically.
+                                </p>
+                            </div>
+                            <div className="p-8 border-[1.5px] border-slate-900 dark:border-slate-100 rounded relative">
+                                <div className="absolute -top-4 -left-4 w-10 h-10 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 flex items-center justify-center font-black rounded border-[1.5px] border-slate-900 dark:border-slate-100">03</div>
+                                <h3 className="font-extrabold uppercase tracking-wide text-lg mb-2 mt-2">Monitor Dashboard</h3>
+                                <p className="text-xs text-slate-500 dark:text-slate-400 font-mono leading-relaxed">
+                                    Receive real-time alerts for impending renewals, analyze spending patterns, and maintain total systemic control.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Pricing Section */}
+                <section id="pricing" className="w-full px-6 py-20 border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/20">
+                    <div className="max-w-5xl mx-auto">
+                        <div className="text-center mb-16">
+                            <div className="inline-block border-[1.5px] border-slate-900 dark:border-slate-100 px-2 py-0.5 font-mono text-[9px] uppercase font-bold tracking-widest bg-white dark:bg-slate-800 rounded mb-3">
+                                // PROTOCOL ALLOCATION
+                            </div>
+                            <h2 className="text-3xl font-extrabold uppercase tracking-tight">Access Tiers.</h2>
+                            <p className="text-slate-500 dark:text-slate-400 font-mono text-xs mt-2 max-w-md mx-auto">
+                                Choose the volume allocation that matches your operational requirements.
+                            </p>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+                            {/* Free Tier */}
+                            <div className="p-8 border-[1.5px] border-slate-900 dark:border-slate-100 rounded bg-white dark:bg-slate-900 flex flex-col transition-transform hover:-translate-y-1">
+                                <h3 className="font-extrabold uppercase tracking-widest text-xl mb-1">Standard Node</h3>
+                                <p className="text-xs font-mono text-slate-500 dark:text-slate-400 mb-6">For basic structural organization.</p>
+                                <div className="text-4xl font-black tracking-tighter mb-8">Free</div>
+                                <ul className="space-y-4 font-mono text-xs mb-8 flex-1">
+                                    <li className="flex items-center gap-3"><svg className="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> Up to 50 active bills</li>
+                                    <li className="flex items-center gap-3"><svg className="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> Basic document vaulting</li>
+                                    <li className="flex items-center gap-3"><svg className="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> Email reminders</li>
+                                    <li className="flex items-center gap-3 opacity-50"><svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg> No OCR Extraction</li>
+                                </ul>
+                                <button onClick={() => setIsSignupModalOpen(true)} className="btn btn-outline w-full py-3">Initialize Basic</button>
+                            </div>
+
+                            {/* Pro Tier */}
+                            <div className="p-8 border-2 border-indigo-500 rounded bg-white dark:bg-slate-900 flex flex-col relative shadow-[6px_6px_0_0_#6366f1] transition-transform hover:-translate-y-1">
+                                <div className="absolute top-0 right-8 transform -translate-y-1/2 bg-indigo-500 text-white px-3 py-1 text-[9px] font-bold font-mono tracking-widest uppercase rounded">Recommended</div>
+                                <h3 className="font-extrabold uppercase tracking-widest text-xl mb-1 text-indigo-600 dark:text-indigo-400">Pro Matrix</h3>
+                                <p className="text-xs font-mono text-slate-500 dark:text-slate-400 mb-6">Complete life synchronization.</p>
+                                <div className="text-4xl font-black tracking-tighter mb-8">₹2,499<span className="text-sm font-mono opacity-50 tracking-normal font-normal">/yr</span></div>
+                                <ul className="space-y-4 font-mono text-xs mb-8 flex-1">
+                                    <li className="flex items-center gap-3"><svg className="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> Unlimited trackable nodes</li>
+                                    <li className="flex items-center gap-3"><svg className="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> Full OCR Metadata Extraction</li>
+                                    <li className="flex items-center gap-3"><svg className="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> SMS & WhatsApp alerts</li>
+                                    <li className="flex items-center gap-3"><svg className="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> Encrypted cloud backup</li>
+                                </ul>
+                                <button onClick={() => setIsSignupModalOpen(true)} className="btn btn-dark w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white border-indigo-700">Deploy Pro</button>
+                            </div>
                         </div>
                     </div>
                 </section>
