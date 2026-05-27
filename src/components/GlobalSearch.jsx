@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLifeAdmin } from '../context/LifeAdminContext';
 
@@ -12,9 +12,11 @@ export default function GlobalSearch({ isOpen, onClose }) {
     // Focus input when opened
     useEffect(() => {
         if (isOpen) {
-            setQuery('');
-            setActiveIndex(0);
-            setTimeout(() => inputRef.current?.focus(), 50);
+            setTimeout(() => {
+                setQuery('');
+                setActiveIndex(0);
+                inputRef.current?.focus();
+            }, 10);
         }
     }, [isOpen]);
 
@@ -28,40 +30,43 @@ export default function GlobalSearch({ isOpen, onClose }) {
     }, [onClose]);
 
     // Build search results
-    const results = [];
-    if (query.trim().length > 0) {
-        const q = query.toLowerCase();
+    const results = useMemo(() => {
+        const res = [];
+        if (query.trim().length > 0) {
+            const q = query.toLowerCase();
 
-        bills.forEach(b => {
-            if (b.name?.toLowerCase().includes(q) || b.category?.toLowerCase().includes(q)) {
-                results.push({ type: 'Bill', label: b.name, sub: `${b.category} • ₹${b.amount}`, badge: b.status, badgeType: b.status === 'Paid' ? 'green' : 'red', route: '/bills', icon: 'bill' });
-            }
-        });
+            bills.forEach(b => {
+                if (b.name?.toLowerCase().includes(q) || b.category?.toLowerCase().includes(q)) {
+                    res.push({ type: 'Bill', label: b.name, sub: `${b.category} • ₹${b.amount}`, badge: b.status, badgeType: b.status === 'Paid' ? 'green' : 'red', route: '/bills', icon: 'bill' });
+                }
+            });
 
-        documents.forEach(d => {
-            if (d.title?.toLowerCase().includes(q) || d.type?.toLowerCase().includes(q) || d.notes?.toLowerCase().includes(q)) {
-                results.push({ type: 'Document', label: d.title, sub: `${d.type} • Expires ${d.renewalDate}`, badge: 'Vault', badgeType: 'blue', route: '/documents', icon: 'doc' });
-            }
-        });
+            documents.forEach(d => {
+                if (d.title?.toLowerCase().includes(q) || d.type?.toLowerCase().includes(q) || d.notes?.toLowerCase().includes(q)) {
+                    res.push({ type: 'Document', label: d.title, sub: `${d.type} • Expires ${d.renewalDate}`, badge: 'Vault', badgeType: 'blue', route: '/documents', icon: 'doc' });
+                }
+            });
 
-        renewals.forEach(r => {
-            if (r.name?.toLowerCase().includes(q) || r.category?.toLowerCase().includes(q)) {
-                results.push({ type: 'Renewal', label: r.name, sub: `${r.category} • ${r.date}`, badge: r.status, badgeType: r.status === 'Due Soon' ? 'red' : 'blue', route: '/renewals', icon: 'renewal' });
-            }
-        });
+            renewals.forEach(r => {
+                if (r.name?.toLowerCase().includes(q) || r.category?.toLowerCase().includes(q)) {
+                    res.push({ type: 'Renewal', label: r.name, sub: `${r.category} • ${r.date}`, badge: r.status, badgeType: r.status === 'Due Soon' ? 'red' : 'blue', route: '/renewals', icon: 'renewal' });
+                }
+            });
 
-        appointments.forEach(a => {
-            if (a.title?.toLowerCase().includes(q) || a.category?.toLowerCase().includes(q) || a.notes?.toLowerCase().includes(q)) {
-                results.push({ type: 'Appointment', label: a.title, sub: `${a.category} • ${a.date} at ${a.time}`, badge: 'Scheduled', badgeType: 'blue', route: '/appointments', icon: 'appt' });
-            }
-        });
+            appointments.forEach(a => {
+                if (a.title?.toLowerCase().includes(q) || a.category?.toLowerCase().includes(q) || a.notes?.toLowerCase().includes(q)) {
+                    res.push({ type: 'Appointment', label: a.title, sub: `${a.category} • ${a.date} at ${a.time}`, badge: 'Scheduled', badgeType: 'blue', route: '/appointments', icon: 'appt' });
+                }
+            });
 
-        (diaries || []).forEach(d => {
-            if (d.title?.toLowerCase().includes(q) || d.content?.toLowerCase().includes(q) || (d.tags || []).some(t => t.toLowerCase().includes(q))) {
-                results.push({ type: 'Diary', label: d.title, sub: d.content?.slice(0, 60) + '...', badge: d.mood || 'Entry', badgeType: 'blue', route: '/diary', icon: 'diary' });
-            }
-        });
-    }
+            (diaries || []).forEach(d => {
+                if (d.title?.toLowerCase().includes(q) || d.content?.toLowerCase().includes(q) || (d.tags || []).some(t => t.toLowerCase().includes(q))) {
+                    res.push({ type: 'Diary', label: d.title, sub: d.content?.slice(0, 60) + '...', badge: d.mood || 'Entry', badgeType: 'blue', route: '/diary', icon: 'diary' });
+                }
+            });
+        }
+        return res;
+    }, [query, bills, documents, renewals, appointments, diaries]);
 
     // Keyboard navigation
     useEffect(() => {
