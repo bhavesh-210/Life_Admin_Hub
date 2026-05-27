@@ -5,6 +5,11 @@ export default function Sidebar({ isMobileMenuOpen, setIsMobileMenuOpen }) {
     const navigate = useNavigate();
     const { profile, settings, updateSetting } = useLifeAdmin();
 
+    // Compute avatar initials live from the name — never stale
+    const liveAvatar = profile.name
+        ? profile.name.trim().split(/\s+/).map(w => w[0]).join('').toUpperCase().slice(0, 2)
+        : '?';
+
     const linkClasses = ({ isActive }) => 
         `sidebar-link ${isActive ? 'active' : ''}`;
 
