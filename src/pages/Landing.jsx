@@ -10,6 +10,9 @@ export default function Landing({ setIsLoggedIn }) {
     const [selectedMonth, setSelectedMonth] = useState('current');
     const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
     const [isSignupModalOpen, setIsSignupModalOpen] = useState(false);
+    const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
+    const [isTermsModalOpen, setIsTermsModalOpen] = useState(false);
+    const [isSupportModalOpen, setIsSupportModalOpen] = useState(false);
     const [spendingAmount, setSpendingAmount] = useState('₹7,397');
     const [amountOpacity, setAmountOpacity] = useState(1);
 
@@ -276,9 +279,9 @@ export default function Landing({ setIsLoggedIn }) {
             <footer className="w-full py-8 border-t border-slate-200 dark:border-slate-800 max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-mono">
                 <div className="text-slate-500">&copy; 2026 Admin Hub. Built for precision.</div>
                 <div className="flex gap-6 text-slate-500">
-                    <a href="#" className="hover:text-slate-900 dark:hover:text-white transition-colors">Privacy Policy</a>
-                    <a href="#" className="hover:text-slate-900 dark:hover:text-white transition-colors">Terms</a>
-                    <a href="#" className="hover:text-slate-900 dark:hover:text-white transition-colors">Support Node</a>
+                    <button onClick={() => setIsPrivacyModalOpen(true)} className="hover:text-slate-900 dark:hover:text-white transition-colors">Privacy Policy</button>
+                    <button onClick={() => setIsTermsModalOpen(true)} className="hover:text-slate-900 dark:hover:text-white transition-colors">Terms</button>
+                    <button onClick={() => setIsSupportModalOpen(true)} className="hover:text-slate-900 dark:hover:text-white transition-colors">Support Node</button>
                 </div>
             </footer>
 
@@ -328,8 +331,84 @@ export default function Landing({ setIsLoggedIn }) {
                                 <label className="block text-xs font-mono font-bold uppercase tracking-wider mb-1">Passkey</label>
                                 <input type="password" name="password" className="input" placeholder="••••••••" required />
                             </div>
-                            <button type="submit" className="w-full btn btn-dark mt-2">Initialize Account</button>
+                            <button type="submit" className="w-full btn btn-dark mt-4">Create Account</button>
                         </form>
+                    </div>
+                </div>
+            )}
+
+            {/* Privacy Modal */}
+            {isPrivacyModalOpen && (
+                <div className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-xs flex items-center justify-center p-4" onClick={(e) => { if (e.target === e.currentTarget) setIsPrivacyModalOpen(false)}}>
+                    <div className="auth-card relative animate-popIn max-w-2xl">
+                        <button onClick={() => setIsPrivacyModalOpen(false)} className="absolute top-6 right-6 text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+                        </button>
+                        <h2 className="text-2xl font-extrabold uppercase tracking-tight mb-2">// Privacy Policy</h2>
+                        <p className="text-xs font-mono text-slate-500 dark:text-slate-400 mb-6">Data encryption and telemetry guidelines.</p>
+                        <div className="space-y-4 text-xs font-mono opacity-80 max-h-[50vh] overflow-y-auto pr-4">
+                            <p className="font-bold text-slate-900 dark:text-white uppercase">// 01. Local Storage</p>
+                            <p>Admin Hub is a client-first application. All data arrays (bills, documents, renewables) are strictly stored in your local browser storage context. We do not transmit this data to external database nodes.</p>
+                            <p className="font-bold text-slate-900 dark:text-white uppercase mt-4">// 02. OCR Processing</p>
+                            <p>The Optical Character Recognition (OCR) mockups run strictly on client-side simulation logic. No actual file binaries are uploaded to our servers during document vaulting.</p>
+                            <p className="font-bold text-slate-900 dark:text-white uppercase mt-4">// 03. Analytics</p>
+                            <p>We may collect anonymized telemetry data (e.g. click mapping, error boundary reports) to improve the structural integrity of the application. This does not contain PII.</p>
+                        </div>
+                        <button onClick={() => setIsPrivacyModalOpen(false)} className="w-full btn btn-dark mt-6">Acknowledge</button>
+                    </div>
+                </div>
+            )}
+
+            {/* Terms Modal */}
+            {isTermsModalOpen && (
+                <div className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-xs flex items-center justify-center p-4" onClick={(e) => { if (e.target === e.currentTarget) setIsTermsModalOpen(false)}}>
+                    <div className="auth-card relative animate-popIn max-w-2xl">
+                        <button onClick={() => setIsTermsModalOpen(false)} className="absolute top-6 right-6 text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+                        </button>
+                        <h2 className="text-2xl font-extrabold uppercase tracking-tight mb-2">// Terms of Service</h2>
+                        <p className="text-xs font-mono text-slate-500 dark:text-slate-400 mb-6">Operational protocol and usage agreements.</p>
+                        <div className="space-y-4 text-xs font-mono opacity-80 max-h-[50vh] overflow-y-auto pr-4">
+                            <p className="font-bold text-slate-900 dark:text-white uppercase">// Acceptable Use</p>
+                            <p>By initializing the Admin Hub instance, you agree to utilize the software for personal structural organization. Reverse engineering the UI lattice or distributed grid algorithms is prohibited.</p>
+                            <p className="font-bold text-slate-900 dark:text-white uppercase mt-4">// Liability Node</p>
+                            <p>Admin Hub is provided "as is". We are not responsible for missed financial renewals or expired passports due to user input errors in the tracker registry.</p>
+                        </div>
+                        <button onClick={() => setIsTermsModalOpen(false)} className="w-full btn btn-dark mt-6">Accept Node</button>
+                    </div>
+                </div>
+            )}
+
+            {/* Support Modal */}
+            {isSupportModalOpen && (
+                <div className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-xs flex items-center justify-center p-4" onClick={(e) => { if (e.target === e.currentTarget) setIsSupportModalOpen(false)}}>
+                    <div className="auth-card relative animate-popIn max-w-md">
+                        <button onClick={() => setIsSupportModalOpen(false)} className="absolute top-6 right-6 text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+                        </button>
+                        <h2 className="text-2xl font-extrabold uppercase tracking-tight mb-2">// Support Node</h2>
+                        <p className="text-xs font-mono text-slate-500 dark:text-slate-400 mb-6">Initialize a connection to the engineering team.</p>
+                        <div className="space-y-4 text-xs font-mono">
+                            <div className="p-4 border-[1.5px] border-slate-900/10 dark:border-slate-100/10 rounded flex items-center gap-4">
+                                <div className="w-10 h-10 border-[1.5px] border-slate-900 dark:border-slate-100 flex items-center justify-center rounded">
+                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                                </div>
+                                <div>
+                                    <p className="font-bold uppercase tracking-wide">Direct Email</p>
+                                    <p className="opacity-60 mt-0.5">hello@adminhub.io</p>
+                                </div>
+                            </div>
+                            <div className="p-4 border-[1.5px] border-slate-900/10 dark:border-slate-100/10 rounded flex items-center gap-4">
+                                <div className="w-10 h-10 border-[1.5px] border-slate-900 dark:border-slate-100 flex items-center justify-center rounded">
+                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                                </div>
+                                <div>
+                                    <p className="font-bold uppercase tracking-wide">System Status</p>
+                                    <p className="opacity-60 mt-0.5 text-emerald-500 dark:text-emerald-400 font-bold">All Systems Operational</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button onClick={() => setIsSupportModalOpen(false)} className="w-full btn btn-dark mt-6">Close</button>
                     </div>
                 </div>
             )}
