@@ -5,7 +5,7 @@ import { useLifeAdmin } from '../context/LifeAdminContext';
 export default function Landing({ setIsLoggedIn }) {
     const navigate = useNavigate();
     const chartRef = useRef(null);
-    const { settings, updateSetting } = useLifeAdmin();
+    const { settings, updateSetting, updateProfile } = useLifeAdmin();
     const [chartInstance, setChartInstance] = useState(null);
     const [selectedMonth, setSelectedMonth] = useState('current');
     const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
@@ -88,12 +88,26 @@ export default function Landing({ setIsLoggedIn }) {
 
     const handleLogin = (e) => {
         e.preventDefault();
+        const formData = new FormData(e.target);
+        const email = formData.get('email');
+        if (email) {
+            updateProfile({ email });
+        }
         setIsLoggedIn(true);
         navigate('/dashboard');
     };
 
     const handleSignup = (e) => {
         e.preventDefault();
+        const formData = new FormData(e.target);
+        const name = formData.get('name');
+        const email = formData.get('email');
+        if (name || email) {
+            updateProfile({ 
+                name: name || 'Admin User', 
+                email: email || 'admin@example.com' 
+            });
+        }
         setIsLoggedIn(true);
         navigate('/dashboard');
     };
@@ -280,11 +294,11 @@ export default function Landing({ setIsLoggedIn }) {
                         <form onSubmit={handleLogin} className="space-y-4">
                             <div>
                                 <label className="block text-xs font-mono font-bold uppercase tracking-wider mb-1">Email Node</label>
-                                <input type="email" className="input" placeholder="node@domain.com" required defaultValue="admin@example.com" />
+                                <input type="email" name="email" className="input" placeholder="node@domain.com" required defaultValue="admin@example.com" />
                             </div>
                             <div>
                                 <label className="block text-xs font-mono font-bold uppercase tracking-wider mb-1">Passkey</label>
-                                <input type="password" className="input" placeholder="••••••••" required />
+                                <input type="password" name="password" className="input" placeholder="••••••••" required />
                             </div>
                             <button type="submit" className="w-full btn btn-dark mt-2">Authorize Connection</button>
                         </form>
@@ -304,15 +318,15 @@ export default function Landing({ setIsLoggedIn }) {
                         <form onSubmit={handleSignup} className="space-y-4">
                             <div>
                                 <label className="block text-xs font-mono font-bold uppercase tracking-wider mb-1">Full Name</label>
-                                <input type="text" className="input" placeholder="Jane Doe" required defaultValue="Admin User" />
+                                <input type="text" name="name" className="input" placeholder="Jane Doe" required defaultValue="Admin User" />
                             </div>
                             <div>
                                 <label className="block text-xs font-mono font-bold uppercase tracking-wider mb-1">Email Node</label>
-                                <input type="email" className="input" placeholder="node@domain.com" required defaultValue="admin@example.com" />
+                                <input type="email" name="email" className="input" placeholder="node@domain.com" required defaultValue="admin@example.com" />
                             </div>
                             <div>
                                 <label className="block text-xs font-mono font-bold uppercase tracking-wider mb-1">Passkey</label>
-                                <input type="password" className="input" placeholder="••••••••" required />
+                                <input type="password" name="password" className="input" placeholder="••••••••" required />
                             </div>
                             <button type="submit" className="w-full btn btn-dark mt-2">Initialize Account</button>
                         </form>

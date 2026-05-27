@@ -17,12 +17,37 @@ import Sidebar from './components/Sidebar';
 
 // ProtectedRoute
 function ProtectedRoute({ isLoggedIn, children }) {
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
     if (!isLoggedIn) return <Navigate to="/" />;
 
     return (
-        <div className="flex min-h-screen">
-            <Sidebar />
-            <div className="flex-grow ml-64 p-8 relative z-10 transition-colors duration-300 text-slate-900 dark:text-slate-100">{children}</div>
+        <div className="flex min-h-screen relative">
+            <Sidebar isMobileMenuOpen={isMobileMenuOpen} setIsMobileMenuOpen={setIsMobileMenuOpen} />
+            
+            <div className="flex-1 flex flex-col min-w-0 md:ml-[260px] relative z-10 transition-colors duration-300 text-slate-900 dark:text-slate-100">
+                {/* Mobile Top Bar */}
+                <div className="md:hidden flex items-center justify-between p-4 border-b-[1.5px] border-slate-900 dark:border-slate-100 bg-white dark:bg-slate-950 sticky top-0 z-20 shadow-sm">
+                    <div className="flex items-center gap-2">
+                        <div className="w-8 h-8 border-[1.5px] border-slate-900 dark:border-slate-100 bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 flex items-center justify-center font-black text-lg rounded">
+                            L
+                        </div>
+                        <span className="sidebar-logo text-lg">Admin Hub</span>
+                    </div>
+                    <button 
+                        onClick={() => setIsMobileMenuOpen(true)}
+                        className="p-1.5 border-[1.5px] border-slate-900 dark:border-slate-100 rounded bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors"
+                    >
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <div className="flex-grow p-4 md:p-8 overflow-x-hidden">
+                    {children}
+                </div>
+            </div>
         </div>
     );
 }
