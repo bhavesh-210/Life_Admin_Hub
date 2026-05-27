@@ -1,8 +1,10 @@
 import StatCard from '../components/StatCard';
 import { useLifeAdmin } from '../context/LifeAdminContext';
+import { useNavigate } from 'react-router-dom';
 
 export default function Dashboard() {
     const { bills, documents, appointments, renewals } = useLifeAdmin();
+    const navigate = useNavigate();
 
     // Calculate dynamic stats
     const paidBills = bills.filter((b) => b.status === 'Paid');
@@ -16,10 +18,26 @@ export default function Dashboard() {
 
     return (
         <div className="w-full max-w-5xl mx-auto space-y-8">
-            <div className="page-header">
+            <div className="page-header flex flex-col sm:flex-row sm:items-end justify-between gap-4">
                 <div>
                     <h1 className="page-title">Operational Hub</h1>
                     <p className="page-subtitle">// EMAIL NODES SCANNED & SYSTEM VALUES SYNCHRONIZED</p>
+                </div>
+
+                {/* Quick Actions */}
+                <div className="flex items-center gap-2 overflow-x-auto pb-1 sm:pb-0 scrollbar-hide w-full sm:w-auto">
+                    <button onClick={() => navigate('/bills')} className="btn btn-dark whitespace-nowrap flex items-center gap-2 flex-1 sm:flex-none justify-center">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                        Add Bill
+                    </button>
+                    <button onClick={() => navigate('/appointments')} className="btn btn-outline whitespace-nowrap flex items-center gap-2 flex-1 sm:flex-none justify-center">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        Schedule
+                    </button>
+                    <button onClick={() => navigate('/documents')} className="btn btn-outline whitespace-nowrap flex items-center gap-2 hidden sm:flex">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
+                        Upload
+                    </button>
                 </div>
             </div>
 
