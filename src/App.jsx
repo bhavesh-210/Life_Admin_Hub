@@ -12,6 +12,7 @@ import Renewals from './pages/Renewals';
 import Appointments from './pages/Appointments';
 import Profile from './pages/Profile';
 import Diary from './pages/Diary';
+import CalorieTracker from './pages/CalorieTracker';
 import Sidebar from './components/Sidebar';
 import GlobalSearch from './components/GlobalSearch';
 
@@ -105,6 +106,7 @@ export default function App() {
                 <Route path="/renewals" element={<ProtectedRoute isLoggedIn={isLoggedIn}><Renewals /></ProtectedRoute>} />
                 <Route path="/appointments" element={<ProtectedRoute isLoggedIn={isLoggedIn}><Appointments /></ProtectedRoute>} />
                 <Route path="/diary" element={<ProtectedRoute isLoggedIn={isLoggedIn}><Diary /></ProtectedRoute>} />
+                <Route path="/calories" element={<ProtectedRoute isLoggedIn={isLoggedIn}><CalorieTracker /></ProtectedRoute>} />
                 <Route path="/profile" element={<ProtectedRoute isLoggedIn={isLoggedIn}><Profile /></ProtectedRoute>} />
 
 
